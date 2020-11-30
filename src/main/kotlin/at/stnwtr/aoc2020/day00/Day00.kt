@@ -3,7 +3,6 @@ package at.stnwtr.aoc2020.day00
 import at.stnwtr.aoc2020.shared.Day
 
 class Day00 : Day() {
-
     override fun setUp() {
         println("[setUp] Code for setting up both parts on this day goes here ...")
     }

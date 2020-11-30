@@ -2,17 +2,17 @@ package at.stnwtr.aoc2020.shared
 
 abstract class Day {
 
-    open fun setUp() {}
+    protected open fun setUp() {}
 
-    open fun beforePart1() {}
-    abstract fun part1()
-    open fun afterPart1() {}
+    protected open fun beforePart1() {}
+    protected abstract fun part1()
+    protected open fun afterPart1() {}
 
-    open fun beforePart2() {}
-    abstract fun part2()
-    open fun afterPart2() {}
+    protected open fun beforePart2() {}
+    protected abstract fun part2()
+    protected open fun afterPart2() {}
 
-    open fun tearDown() {}
+    protected open fun tearDown() {}
 
     fun run() {
         setUp()
