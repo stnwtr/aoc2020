@@ -1,30 +1,42 @@
 package at.stnwtr.aoc2020.shared
 
-abstract class Day {
+import java.nio.file.Path
+import java.nio.file.Paths
 
-    protected open fun setUp() {}
+abstract class Day(private val level: String) {
 
-    protected open fun beforePart1() {}
+    protected val inputFilePath: Path = Paths.get(this::class.java.classLoader.getResource("input${level}")?.toURI()
+        ?: throw Error("Could not find Inputfile 'input${level}'"))
+
     protected abstract fun part1()
-    protected open fun afterPart1() {}
-
-    protected open fun beforePart2() {}
     protected abstract fun part2()
-    protected open fun afterPart2() {}
-
-    protected open fun tearDown() {}
 
     fun run() {
-        setUp()
+        println("+----+--------+-----+----+")
+        println("|     starting day${level}     |")
+        println("+----+--------+-----+----+")
+        println()
 
-        beforePart1()
+        println("+---- starting part 1 ----+")
+        println()
+
         part1()
-        afterPart1()
 
-        beforePart2()
+        println()
+        println("+---- stopping part 1 ----+")
+        println()
+
+        println("+---- starting 2 ----+")
+        println()
+
         part2()
-        afterPart2()
 
-        tearDown()
+        println()
+        println("+---- stopping 2 ----+")
+        println()
+
+        println("+----+--------+-----+----+")
+        println("|     stopping day${level}     |")
+        println("+----+--------+-----+----+")
     }
 }
