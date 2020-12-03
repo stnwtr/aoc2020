@@ -15,7 +15,6 @@ enum class PasswordPolicy(private val validator: (PasswordLine) -> Boolean) {
 }
 
 class PasswordLine(input: String) {
-
     val min: Int
     val max: Int
     val letter: Char
@@ -36,7 +35,6 @@ class PasswordLine(input: String) {
 }
 
 class Day02 : Day("02") {
-
     private val lines = Files.readAllLines(inputFilePath)
         .map { PasswordLine(it) }
 

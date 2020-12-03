@@ -4,7 +4,6 @@ import java.nio.file.Path
 import java.nio.file.Paths
 
 abstract class Day(private val level: String) {
-
     protected val inputFilePath: Path = Paths.get(this::class.java.classLoader.getResource("input${level}")?.toURI()
         ?: throw Error("Could not find Inputfile 'input${level}'"))
 

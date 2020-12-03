@@ -4,7 +4,6 @@ import at.stnwtr.aoc2020.shared.Day
 import java.nio.file.Files
 
 class Day01 : Day("01") {
-
     private var lines = Files.readAllLines(inputFilePath).map { it.toInt() }
 
     override fun part1() {
