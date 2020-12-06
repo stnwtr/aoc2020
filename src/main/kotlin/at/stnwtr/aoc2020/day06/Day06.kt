@@ -4,18 +4,13 @@ import at.stnwtr.aoc2020.shared.Day
 import java.nio.file.Files
 
 class GroupAnswers(private val rawAnswers: List<String>) {
-    fun countAllYes(): Int {
-        return rawAnswers.map { it.toSet() }
-            .fold(setOf<Char>(), { value, current -> value + current })
-            .size
-    }
+    fun countAllYes() = rawAnswers.map { it.toSet() }
+        .fold(setOf<Char>(), { value, current -> value union current })
+        .size
 
-    fun countSharedYes(): Int {
-        return rawAnswers.map { it.toSet() }
-            .fold("abcdefghijklmnopqrstuvwxyz".toSet(),
-                { value, current -> value intersect current })
-            .size
-    }
+    fun countSharedYes() = rawAnswers.map { it.toSet() }
+        .fold("abcdefghijklmnopqrstuvwxyz".toSet(), { value, current -> value intersect current })
+        .size
 }
 
 class Day06 : Day("06") {
@@ -25,14 +20,10 @@ class Day06 : Day("06") {
         .map { GroupAnswers(it) }
 
     override fun part1() {
-        answers.map { it.countAllYes() }
-            .fold(0, { value, current -> value + current })
-            .also(::println)
+        println(answers.map { it.countAllYes() }.sum())
     }
 
     override fun part2() {
-        answers.map { it.countSharedYes() }
-            .fold(0, { value, current -> value + current })
-            .also(::println)
+        println(answers.map { it.countSharedYes() }.sum())
     }
 }
