@@ -62,17 +62,18 @@ class Passport(raw: String) {
     }
 }
 
-class Day04 : Day("04") {
+class Day04 : Day<Int, Int>("04") {
     private val passports = Files.readString(inputFilePath)
+        .trimEnd()
         .split(System.lineSeparator() + System.lineSeparator())
         .map { it.replace(System.lineSeparator(), " ") }
         .map { Passport(it) }
 
-    override fun part1() {
-        println(passports.filter { it.isValidWithoutChecks() }.count())
+    override fun first(): Int {
+        return passports.filter { it.isValidWithoutChecks() }.size
     }
 
-    override fun part2() {
-        println(passports.filter { it.isValidWithChecks() }.count())
+    override fun second(): Int {
+        return passports.filter { it.isValidWithChecks() }.size
     }
 }

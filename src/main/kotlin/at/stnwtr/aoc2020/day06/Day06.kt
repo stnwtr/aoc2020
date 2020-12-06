@@ -13,17 +13,18 @@ class GroupAnswers(private val rawAnswers: List<String>) {
         .size
 }
 
-class Day06 : Day("06") {
+class Day06 : Day<Int, Int>("06") {
     private val answers = Files.readString(inputFilePath)
+        .trimEnd()
         .split(System.lineSeparator() + System.lineSeparator())
         .map { it.split(System.lineSeparator()) }
         .map { GroupAnswers(it) }
 
-    override fun part1() {
-        println(answers.map { it.countAllYes() }.sum())
+    override fun first(): Int {
+        return answers.map { it.countAllYes() }.sum()
     }
 
-    override fun part2() {
-        println(answers.map { it.countSharedYes() }.sum())
+    override fun second(): Int {
+        return answers.map { it.countSharedYes() }.sum()
     }
 }

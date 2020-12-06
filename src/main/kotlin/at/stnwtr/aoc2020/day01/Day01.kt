@@ -3,26 +3,23 @@ package at.stnwtr.aoc2020.day01
 import at.stnwtr.aoc2020.shared.Day
 import java.nio.file.Files
 
-class Day01 : Day("01") {
+class Day01 : Day<Int, Int>("01") {
     private var lines = Files.readAllLines(inputFilePath).map { it.toInt() }
 
-    override fun part1() {
+    override fun first(): Int {
         outermost@ for (i in lines.indices) {
             val x = lines[i]
             for (j in i until lines.size) {
                 val y = lines[j]
                 if (x + y == 2020) {
-                    println("First Number: $x")
-                    println("Second Number: $y")
-                    println("Addition: ${x + y}")
-                    println("Multiplication: ${x * y}")
-                    break@outermost
+                    return x * y
                 }
             }
         }
+        return -1
     }
 
-    override fun part2() {
+    override fun second(): Int {
         outermost@ for (i in lines.indices) {
             val x = lines[i]
             for (j in i until lines.size) {
@@ -30,15 +27,11 @@ class Day01 : Day("01") {
                 for (k in j until lines.size) {
                     val z = lines[k]
                     if (x + y + z == 2020) {
-                        println("First Number: $x")
-                        println("Second Number: $y")
-                        println("Third Number: $z")
-                        println("Addition: ${x + y + z}")
-                        println("Multiplication: ${x * y * z}")
-                        break@outermost
+                        return x * y * z
                     }
                 }
             }
         }
+        return -1
     }
 }

@@ -34,15 +34,15 @@ class PasswordLine(input: String) {
     fun check(policy: PasswordPolicy) = policy.check(this)
 }
 
-class Day02 : Day("02") {
+class Day02 : Day<Int, Int>("02") {
     private val lines = Files.readAllLines(inputFilePath)
         .map { PasswordLine(it) }
 
-    override fun part1() {
-        println(lines.filter { it.check(PasswordPolicy.TOBOGGAN_POLICY) }.count())
+    override fun first(): Int {
+        return lines.filter { it.check(PasswordPolicy.TOBOGGAN_POLICY) }.size
     }
 
-    override fun part2() {
-        println(lines.filter { it.check(PasswordPolicy.SLED_POLICY) }.count())
+    override fun second(): Int {
+        return lines.filter { it.check(PasswordPolicy.SLED_POLICY) }.size
     }
 }
