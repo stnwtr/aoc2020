@@ -5,15 +5,15 @@ import java.nio.file.Files
 
 class GroupAnswers(private val rawAnswers: List<String>) {
     fun countAllYes(): Int {
-        return rawAnswers.map { it.toSet().toMutableSet() }
-            .fold(mutableSetOf<Char>(), { value, current -> (value + current).toMutableSet() })
+        return rawAnswers.map { it.toSet() }
+            .fold(setOf<Char>(), { value, current -> value + current })
             .size
     }
 
     fun countSharedYes(): Int {
-        return rawAnswers.map { it.toSet().toMutableSet() }
-            .fold("abcdefghijklmnopqrstuvwxyz".toSet().toMutableSet(),
-                { value, current -> (value intersect current).toMutableSet() })
+        return rawAnswers.map { it.toSet() }
+            .fold("abcdefghijklmnopqrstuvwxyz".toSet(),
+                { value, current -> value intersect current })
             .size
     }
 }
