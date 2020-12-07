@@ -2,6 +2,7 @@ package at.stnwtr.aoc2020.shared
 
 import java.nio.file.Path
 import java.nio.file.Paths
+import kotlin.system.measureTimeMillis
 
 abstract class Day<F, S>(private val level: String) {
     protected val inputFilePath: Path = Paths.get(this::class.java.classLoader.getResource("input${level}")?.toURI()
@@ -12,7 +13,15 @@ abstract class Day<F, S>(private val level: String) {
 
     fun run() {
         println("+ ---------------- day${level} ----------------")
-        println("| first: ${first()}")
-        println("| second: ${second()}")
+        println("+-> time: ${
+            measureTimeMillis {
+                println("| first: ${first()}")
+            }
+        }")
+        println("+-> time: ${
+            measureTimeMillis {
+                println("| second: ${second()}")
+            }
+        }")
     }
 }
